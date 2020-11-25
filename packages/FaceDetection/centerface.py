@@ -6,9 +6,9 @@ import cv2
 import datetime
 import sys
 
-sys.path.insert(1, 'centerface')
+# sys.path.insert(0, 'FaceDetection/centerface.py')
 
-modelPath = 'centerface.onnx'
+modelPath = './packages/FaceDetection/centerface.onnx'
 
 
 class CenterFace(object):
