@@ -52,6 +52,7 @@ thisdict = {
 }
 df = pd.DataFrame(data=thisdict)
 # print(df)
+df.to_csv('out.csv', index=False)
 
 values = df.values
 name = values[:, 0]
