@@ -1,3 +1,8 @@
+"""
+trich xuat dac trung
+model arcface
+"""
+
 import os
 from packages.FaceRecognition import facemod
 from packages.FaceRecognition.arcface import ArcFace
@@ -23,7 +28,7 @@ def main():
     for path in image_paths:
         name = os.path.basename(path)
         names.append(name)
-
+    print(names)
     dataset = facemod.get_dataset(data_dir)
     face_rec = ArcFace.ArcFace()
     # kiem tra co it nhat 1 anh trong moi class
@@ -33,7 +38,11 @@ def main():
     paths, labels = facemod.get_image_paths_and_labels(dataset)
     print('Number of classes: %d' % len(dataset))
     print('Number of images: %d' % len(paths))
-
+    # print(labels)
+    namess = []
+    for i in range(len(labels)):
+        namess.append(names[labels[i]])
+    # print(namess)
     # Tinh embeddings
     print("Calculating feature for image")
     nrof_images = len(paths)
@@ -47,5 +56,5 @@ def main():
             writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(['label', 'emb'])
             for j in range(len(labels)):
-                writer.writerow([labels[j], emb])
+                writer.writerow([namess[j], emb])
 main()

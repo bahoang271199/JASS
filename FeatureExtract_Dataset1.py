@@ -1,5 +1,6 @@
 """
 Trich xuat dac trung
+model facenet
 """
 import tensorflow as tf
 import numpy as np
