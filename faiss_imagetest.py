@@ -1,3 +1,7 @@
+"""
+dung faiss cho face recognition
+"""
+
 from packages.FaceRecognition.arcface import ArcFace
 from packages.FaceRecognition import facemod
 import os
@@ -27,6 +31,7 @@ for path in image_paths:
     names.append(name)
 print(names)
 dataset = facemod.get_dataset(data_dir)
+
 # kiem tra co it nhat 1 anh trong moi class
 for cls in dataset:
     assert (len(cls.image_paths) > 0, 'Phai co it nhat 1 anh')
