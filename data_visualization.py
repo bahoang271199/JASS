@@ -1,3 +1,9 @@
+"""
+truc quan hoa du lieu
+su dung multi-dimentional data visualization: parallel coordinates
+"""
+
+
 from packages.FaceRecognition.arcface import ArcFace
 from packages.FaceRecognition import facemod
 import os
@@ -22,12 +28,13 @@ def get_path(dir_path):
 
 
 data_dir = "Dataset/FaceData/p"
-names = []
+names = []  #khoi tao list chua path cua moi nguoi
 image_paths = get_path(data_dir)
 for path in image_paths:
     name = os.path.basename(path)
     names.append(name)
 # print(names)
+
 dataset = facemod.get_dataset(data_dir)
 # kiem tra co it nhat 1 anh trong moi class
 for cls in dataset:
@@ -36,18 +43,19 @@ paths, labels = facemod.get_image_paths_and_labels(dataset)
 # print('Number of classes: %d' % len(dataset))
 # print('Number of images: %d' % len(paths))
 
-namess = []
+namess = [] # khoi tao danh sach ten
 for i in range(len(labels)):
     namess.append(names[labels[i]])
 # print(namess)
 
-
+# tinh embedding vector cho moi anh
 emb = face_rec._calc_emb_list(paths)
 emb = np.array(emb)
 emb = emb.tolist()
 
 # print(emb)
 
+# dua vao dataframe
 thisdict = {
     'name': namess,
     'emb': emb
@@ -69,6 +77,8 @@ columns_name = df.columns
 # print(columns_name[11:511])
 df = df.drop(columns=columns_name[11:490], axis=1)
 print(df)
+
+# truc quan hoa du lieu
 # # # print(emb[0][0])
 # # fig = px.parallel_coordinates(df, color='name', color_continuous_scale=px.colors.diverging.Tealrose, color_continuous_midpoint=2)
 # # fig.show()
