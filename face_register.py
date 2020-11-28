@@ -40,10 +40,11 @@ def main():
     output_dir = 'Dataset/FaceData/procced' # thu muc luu du lieu nguoi dung
     class_filename = str(class_name + class_id) # Tên của class người dùng == Tên thư mục người dùng
     output_class_dir = os.path.join(output_dir, class_filename) # Thư mục người dùng
-    if not os.path.exists(output_class_dir):
+    if not os.path.exists(output_class_dir):    # neu khong ton tai thu muc thi tao thu muc nguoi dung moi
         os.makedirs(output_class_dir)
     faceDetector = CenterFace()
 
+    # bat dau qua trinh dang ky
     print("Start registing!")
     cap = cv2.VideoCapture(0)
     while True:
