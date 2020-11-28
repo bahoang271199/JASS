@@ -1,3 +1,10 @@
+"""
+Đăng kí khuôn mặt người dùng
++ Chụp ảnh mặt người dùng
++ Lưu vào CSDL
+"""
+
+
 import cv2
 import sqlite3
 import os
@@ -5,7 +12,7 @@ from packages.FaceDetection.centerface import CenterFace
 
 def insertOrUpdate(id, name):
     """
-    Cap nhat nguoi dung vao CSDL
+    Cập nhật người dùng vào CSDL
     :param id:
     :param name:
     :return:
@@ -24,7 +31,8 @@ def insertOrUpdate(id, name):
     conn.commit()
     conn.close()
 
-def camera():
+def main():
+    # Khởi tạo
     FACE_SIZE = 160
     sample_num = 0  # bien dem so mau duoc chup
     class_id = input('ID: ')    # ID nguoi dung
@@ -72,4 +80,4 @@ def camera():
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
-    camera()
+    main()
